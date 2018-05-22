@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        vector<int> num;
+        if(x<0)
+            return false;
+        //int i=0;
+        while(x){
+            int temp=x%10;
+            num.push_back(temp);
+            x/=10;
+        }
+        bool flag =true;
+        int N=num.size();
+        for(int i=0; i<=N/2-1; i++){
+            if(num[i]!=num[N-i-1])
+                flag=false;
+        }
+        return flag;
+    }
+};

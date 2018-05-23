@@ -1,3 +1,4 @@
+//method one
 class Solution {
     public String longestCommonPrefix(String[] strs) {
         if(strs.length == 0)
@@ -14,4 +15,30 @@ class Solution {
         return res;
     }
 }
+
+//method two
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        if(strs.length == 0) return "";
+        else
+            return longestCommonPrefix(strs,0,strs.length-1);
+    }
+    private String longestCommonPrefix(String[] strs, int l, int r){
+        if(l==r)
+            return strs[l];
+        int mid =(l+r)/2;
+        String left = longestCommonPrefix(strs,l,mid);
+        String right = longestCommonPrefix(strs,mid+1,r);
+        return Merge(left,right);
+    }
+    public String Merge(String left, String right){
+        while(right.indexOf(left)!=0){
+            left=left.substring(0,left.length()-1);
+            if(left.isEmpty())
+                return "";
+        }
+        return left;
+    }
+}
+
 

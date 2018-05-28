@@ -1,0 +1,32 @@
+//java  无脑遍历 小心数组越界  以及边界问题的考虑
+
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int len = nums.length;
+        int res=0;
+        if(nums[len-1]<target)
+                res=len;
+        for(int i=0; i<len; i++){
+            if(nums[i]==target)
+                 res=i;
+        }
+        for(int i=0; i<len-1; i++){
+            if(nums[i]<target&&nums[i+1]>target)
+                res=i+1;
+        }
+       
+        return res;
+    }
+}
+
+//C++  巧妙方法
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        for(int i=0; i<nums.size(); i++){
+            if(nums[i]>=target)
+                return i;
+        }
+        return nums.size();
+    }
+};

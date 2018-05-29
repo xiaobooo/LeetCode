@@ -1,0 +1,23 @@
+//java  遍历统计各个字符以及数量
+class Solution {
+    public String countAndSay(int n) {
+        if(n<=0)    return "-1";
+        String res="1";
+        for(int i=1; i<n; i++){
+            StringBuilder sb =new StringBuilder();
+            int index = 0;
+            while(index<res.length()){
+                char val = res.charAt(index);
+                int count=0;
+                while(index<res.length()&&res.charAt(index)==val){
+                    index++;
+                    count++;
+                }
+                sb.append(count);
+                sb.append(val);
+            }//end while
+            res=sb.toString();
+        }//end for
+        return res;
+    }
+}

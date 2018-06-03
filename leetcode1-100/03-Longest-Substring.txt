@@ -18,4 +18,24 @@ class Solution {
     }
 }
 
-//利用ASCII码
+//最优算法 转为char数组处理
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        
+        int max=0;
+        int count=0;
+        
+        char []ch = s.toCharArray();
+        for(int i=0; i<ch.length; i++){
+            for(int j=count; j<i; j++){
+                if(ch[j]==ch[i]){
+                    count=j+1;
+                    break;
+                }
+            }
+            max=Math.max(max,i-count+1);
+        }
+        return max;
+    }
+}

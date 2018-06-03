@@ -1,0 +1,21 @@
+//jAVA  利用集合HashSet不能包含重复元素
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int len = s.length();
+        Set<Character> set = new HashSet<>();
+        int res=0, i=0, j=0;
+        while(i<len&&j<len){
+            if(!set.contains(s.charAt(j))){
+                set.add(s.charAt(j++));
+                res=Math.max(res,j-i);
+            }else{
+                set.remove(s.charAt(i++));
+            }
+        }
+        return res;
+        
+    }
+}
+
+//利用ASCII码
